@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'conversor/css/conversor.css' %}">
+</head>
+<body>
+    <h1>Cotações</h1>
+    <h2>Cotação do Dólar: {{dolar}} Reais</h2>
+    <h2>Cotação do Euro: {{euro}} Reais</h2>
+    <h2>Cotação do Bitcoin: {{bitcoin}} Reais</h2>
+    <h1>Conversor de moedas</h1>
+    <form action = "{% url 'mostrar_conversor' %}" method = "POST"> {% csrf_token %}
+        <p>Escolha o tipo de conversão:</p>
+
+        <label>
+            <input type="radio" name="conversao" value="real_dolar" required>
+            Real -> Dólar
+        </label>
+        <br>
+
+        <label>
+            <input type="radio" name="conversao" value="dolar_real">
+            Dólar -> Real
+        </label>
+        <br>
+
+        <label>
+            <input type="radio" name="conversao" value="real_euro">
+            Real -> Euro
+        </label>
+        <br>
+
+        <label>
+            <input type="radio" name="conversao" value="euro_real">
+            Euro -> Real
+        </label>
+        <br>
+
+        <label>
+            <input type="radio" name="conversao" value="real_bitcoin">
+            Real -> Bitcoin
+        </label>
+        <br>
+
+        <label>
+            <input type="radio" name="conversao" value="bitcoin_real">
+            Bitcoin -> Real
+        </label>
+        <br><br>
+
+        <label for="valor">Insira o valor que deseja converter:</label>
+        <input type="number" id="valor" name="valor" step="0.01" required>
+        <br><br>
+
+        <input type="submit" value="Converter">
+    </form>
+</body>
+</html>
